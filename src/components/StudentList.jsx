@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteStudentData, getStudent } from '../redux-thunk/store/action/studentAction';
+import { deleteStudentData, getStudent, viewStudentData } from '../redux-thunk/store/action/studentAction';
 
 const StudentList = () => {
    const {Students} = useSelector((state) => state.StudentList)
    console.log(Students, "Studentsss");
    const dispatch = useDispatch();
+   const [viewId, setViewId] = useState();
 
    useEffect(()=>{
     dispatch(getStudent())
@@ -17,6 +18,12 @@ const StudentList = () => {
     const deleteData = (id) => {
         dispatch(deleteStudentData(id))
     };
+
+    const viewData = (id) => {
+        setViewId(id);
+        dispatch(viewStudentData(viewId))
+    }
+    
   return (
     <div>
       {/* -----table----- */}
@@ -40,8 +47,8 @@ const StudentList = () => {
                             <td>{val.fatherName}</td>
                             <td>{val.contact}</td>
                             <td>
-                            <i class="fa-solid fa-trash" onClick={()=>deleteData(val.id)} style={{color:"red"}}></i>
-                                
+                            <i class="fa-solid fa-trash" onClick={()=>deleteData(val.id)} style={{color:"#ff0000", cursor:"pointer"}}></i>
+                            <i class="fa-solid fa-pen-to-square ms-3" onClick={()=>viewData(val.id)}></i>        
                             </td>
                         </tr>
                     ))}

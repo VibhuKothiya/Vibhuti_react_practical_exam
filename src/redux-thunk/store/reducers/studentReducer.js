@@ -1,4 +1,4 @@
-import { STUDENT_DELETE_SUCCESS, STUDENT_GET_SUCCESS, STUDENT_POST_SUCCESS } from "../type"
+import { STUDENT_DELETE_SUCCESS, STUDENT_GET_SUCCESS, STUDENT_POST_SUCCESS, STUDENT_VIEW_SUCCESS } from "../type"
 
 
 let initialState = {
@@ -34,6 +34,14 @@ export const studentReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 Students: state.Students.filter((val)=>val.id !== action.payload)                                        
+
+            };
+
+            case STUDENT_VIEW_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                id: action.payload                            
 
             };
 

@@ -12,8 +12,7 @@ const StudentForm = () => {
     
     const handleInputChange = (e) => {
         setInputValue({...inputValue, [e.target.name] : e.target.value})
-    }
-    
+    }    
 
     const handleSubmit = () => {       
 
@@ -31,7 +30,7 @@ const StudentForm = () => {
                     <div className="col-lg-4">
                         <div className="card shadow">
                             <div className="card-header bg-primary text-light text-center">
-                                Enter Your Product
+                                Enter Student Detail
                             </div>
                             <div className="card-body">
                                 <form>

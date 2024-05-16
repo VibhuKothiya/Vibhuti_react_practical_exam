@@ -1,5 +1,5 @@
 import axios from "axios";
-import { STUDENT_DELETE_FAIL, STUDENT_DELETE_REQUEST, STUDENT_DELETE_SUCCESS, STUDENT_GET_FAIL, STUDENT_GET_REQUEST, STUDENT_GET_SUCCESS, STUDENT_POST_REQUEST, STUDENT_POST_SUCCESS,  } from "../type";
+import { STUDENT_DELETE_FAIL, STUDENT_DELETE_REQUEST, STUDENT_DELETE_SUCCESS, STUDENT_GET_FAIL, STUDENT_GET_REQUEST, STUDENT_GET_SUCCESS, STUDENT_POST_REQUEST, STUDENT_POST_SUCCESS, STUDENT_VIEW_SUCCESS,  } from "../type";
 
 //post
 export const addStudent = (inputValue) => {
@@ -28,8 +28,6 @@ export const addStudent = (inputValue) => {
     }
 }
 
-
-//get
 //post
 export const getStudent = () => {
     return async (dispatch) => {
@@ -78,5 +76,13 @@ export const deleteStudentData = (id) => {
                 })
         }
         
+    }
+}
+
+//view
+export const viewStudentData = (id) => {
+    return {
+        type: STUDENT_VIEW_SUCCESS,
+        payload: id
     }
 }
